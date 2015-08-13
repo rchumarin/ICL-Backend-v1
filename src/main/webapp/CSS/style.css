@@ -1,0 +1,82 @@
+.abzac {
+	font-size: 23px;
+	font-weight: bold;
+	color: red; 
+}
+
+div.abzac {
+	text-align:center;
+	height: 30px; 
+	background-color:#E6E6E6;
+	padding:10px;
+	border:1px solid #06C;
+	margin-bottom:20px;
+}
+
+.footer {
+	text-align:center;
+	
+	/*-moz-border-radius: 15px; /*округление рамки для Мозилы*/
+	/*border-radius: 5px; /*округление рамки */
+	
+	background-color:#069;
+	color:white;
+	padding:10px; /* внутренний отступ*/
+
+	border:1px solid #00F; /* верхние границы
+	margin:0 auto; /* отступы от верхней границы */
+	clear:both;
+}
+	
+.small_column {
+	float: left;
+	width: 150px;
+}
+
+.big_column {
+	float: left;
+	width: 550px;
+}
+
+table {
+	width:550px;
+	border:1px solid #999;
+	border-collapse:collapse;
+}
+	th { 
+		color:#FFF;
+		font-weight:bold;
+		padding:10px;
+   		text-align: left;
+   	 	background: #36C;
+
+   	 	border: 1px solid black; 
+  	}
+  
+  	td {
+		padding:10px;
+   	 	text-align: left;
+		border: 1px solid black; 
+  	}
+
+img{
+	border:1px solid #999;
+}
+	
+li {
+	list-style-image: url(../Images/bullet.gif);
+}
+
+i {
+    color:red;
+}
+
+.main {
+	width:700px; /* ширина */
+	margin: 0 auto; /* выравнивание по центру окна*/
+}
+
+.content {
+	float: left;
+	margin-bottom: 20px;
+}
