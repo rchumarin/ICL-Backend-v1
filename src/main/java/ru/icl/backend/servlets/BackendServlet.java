@@ -104,8 +104,6 @@ public class BackendServlet extends HttpServlet {
 
 
         } catch (Exception ex) {           
-            String strContentType = response.getContentType();  
-            System.out.println(strContentType);
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);         
         } finally {
             out.println("</body>");
