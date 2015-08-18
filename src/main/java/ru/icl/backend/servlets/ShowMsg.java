@@ -2,6 +2,9 @@ package ru.icl.backend.servlets;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -27,23 +30,44 @@ public class ShowMsg extends HttpServlet {
 
             if (attr instanceof ArrayList){
                 ArrayList list = (ArrayList) attr;
-                out.println("<h3>Ваш ClientId: </h3>");
-                out.println("<b>" + session.getId() + "</b>");
-                out.println("<h3>Ваши сообщения:</h3>");
+                out.println("<b style=\"color:blue\">Ваши сообщения</b>");
+                out.println("<br>");
+                out.println("<b>" + session.getId() + ":</b>");
+                out.println("<br>");
                 for (Object str : list) {
-                    out.println("<b>"+str+"</b>");
-                }            
+                    out.println("<li>"+str+"</li>");
+                }
+                out.println("<br>");
             }
-            else out.println("<h1>Сообщения не найдены</h1>");
+            else { 
+                out.println("<b style=\"color:red\">Сообщения не найдены</b>");
+                out.println("<br>");
+            }
             
-            out.println("<h3 style=\"color:blue\">Сообщения всех пользователей:</h3>");           
-            out.println("<b>" + (String)getServletContext().getAttribute(BackendServlet.SESSION_MAP).toString() + "</b>");
-                       
+            out.println("<b style=\"color:red\">Сообщения других пользователей</b>");  
+            out.println("<br>");
+                        
+            HashMap<String, List> strMap = (HashMap<String,List>)getServletContext().getAttribute(BackendServlet.SESSION_MAP);                
+                        
+            // сообщения других клиентов       
+            for (Map.Entry<String, List> entry : strMap.entrySet()) {
+                String sessionId = entry.getKey();
+                List listMsg = entry.getValue();
+            
+                //сообщения текущего пользователя пропускаются 
+                if (sessionId.equals(session.getId())) continue;
+                
+                out.println("<b>" + sessionId +": </b>");
+                //out.println("<br>");
+                for (Object str : listMsg) out.println("<li>" + str + "</li>");
+                
+            }
+            
             out.println("</body>");
             out.println("</html>");
-        }
-        
-    }
+            
+        }    
+}    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
