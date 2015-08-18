@@ -33,7 +33,6 @@ public class ShowMsg extends HttpServlet {
                 out.println("<b style=\"color:blue\">Ваши сообщения</b>");
                 out.println("<br>");
                 out.println("<b>" + session.getId() + ":</b>");
-                out.println("<br>");
                 for (Object str : list) {
                     out.println("<li>"+str+"</li>");
                 }
@@ -58,7 +57,6 @@ public class ShowMsg extends HttpServlet {
                 if (sessionId.equals(session.getId())) continue;
                 
                 out.println("<b>" + sessionId +": </b>");
-                //out.println("<br>");
                 for (Object str : listMsg) out.println("<li>" + str + "</li>");
                 
             }
